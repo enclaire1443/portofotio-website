@@ -82,7 +82,7 @@ function LandingPage() {
         animate={firstControl}
       >
         <p className="text-white font-serif font-bold text-center mt-4 text-2xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl">
-          Hello, I'm Muhammad Fatih Zamzami
+          Hello, I&apos;m Muhammad Fatih Zamzami
         </p>
       </motion.div>
 
