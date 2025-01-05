@@ -1,4 +1,3 @@
-import Header from './components/header'
 import LandingPage from './components/landingpage'
 
 const Page = () => {
