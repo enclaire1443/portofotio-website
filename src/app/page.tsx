@@ -1,9 +1,10 @@
 import LandingPage from './components/landingpage'
 
+
 const Page = () => {
   return (
     <div>
-      <LandingPage />
+     <LandingPage />
     </div>
   );
 };

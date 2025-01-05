@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
 import { motion } from 'framer-motion';
+import Head from 'next/head';
 
 function LandingPage() {
   // Text Logic
@@ -10,8 +11,8 @@ function LandingPage() {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    const firstTextDuration = 2500; // Reduced from 4500
-    const secondTextDelay = firstTextDuration + 500; // Reduced delay between texts
+    const firstTextDuration = 3000; 
+    const secondTextDelay = firstTextDuration + 1000; 
 
     setFirstControl('visible');
 
