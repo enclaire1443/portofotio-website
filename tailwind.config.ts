@@ -28,6 +28,19 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        dark: {
+          100: '#fafafa',
+          200: '#3f3f46',
+          300: '#18181a',
+          400: '#18181b',
+          500: '#09090b',
+        },
+        light: {
+          100: "#ffe169",
+          200: "#fad643",
+          300: "#edc531",
+          400: "#dbb42c",
+      },
       },
       backgroundImage: {
         fototim1: "url('/assets/fototim1.jpeg')",

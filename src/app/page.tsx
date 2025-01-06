@@ -30,7 +30,7 @@ const Page = () => {
             x: 20,
             transition: {
             duration: 0.5,
-            ease: "easeOut",
+            ease: "easeInOut",
           }},
           visible: {
             opacity: 1,
