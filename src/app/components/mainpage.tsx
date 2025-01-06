@@ -1,5 +1,4 @@
 import React from 'react'
-import { useAnimation } from 'framer-motion'
 
 
 function mainpage() {
