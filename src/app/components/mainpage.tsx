@@ -1,99 +1,78 @@
-import React from 'react';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+"use clinet";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 function MainPage() {
-  const helloRef = useRef(null);
-  const isInView = useInView(helloRef, {
-    amount: 0.5,
-    once: true,
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    amount: 0.5, // Trigger when 50% of the element is visible
+    once: true, // Only trigger once
   });
 
   return (
-    <>
-      <div className="relative h-screen pt-20">
-        {/* Background Section */}
-        <div
-          className="absolute top-0 right-0 bottom-0 left-0 bg-dark-200"
-          style={{
-            clipPath: 'polygon(100% 0%, 100% 100%, 50% 100%)',
-            zIndex: -1,
-          }}
-        ></div>
+    <div className="relative h-screen pt-20">
+      <div
+        className="absolute top-0 right-0 bottom-0 left-0 bg-dark-200"
+        style={{
+          clipPath: "polygon(100% 0%, 100% 100%, 50% 100%)",
+          zIndex: -1,
+        }}
+      ></div>
 
+      {/* Content Section (Text and Circle) */}
+      <div className="absolute top-[30%] left-[10%] flex flex-col md:flex-row items-center md:space-x-8 text-white">
+        {/* Text Section */}
         <motion.div
-          ref={helloRef}
-          className="absolute top-[30%] left-[10%] flex flex-col sm:flex-row sm:items-center sm:space-x-12 space-y-4 sm:space-y-0 text-white"
-          variants={{
-            hidden: {
-              opacity: 0,
-              y: 50,
-              filter: 'blur(33px)',
-            },
-            visible: {
-              opacity: 1,
-              y: 0,
-              filter: 'blur(0px)',
-              transition: { duration: 1 },
+          ref={ref}
+          className="flex flex-col items-start space-y-4"
+          initial={{
+            opacity: 0,
+            y: 50,
+            filter: "blur(33px)",
+          }}
+          animate={{
+            opacity: isInView ? 1 : 0,
+            y: isInView ? 0 : 50,
+            filter: isInView ? "blur(0px)" : "blur(33px)",
+            transition: { duration: 1 },
+          }}
+        >
+          <p className="font-poppins font-superbold text-6xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            Hello! I'm Fatih <span className="text-light-200">.</span>
+          </p>
+          <p className="font-poppins text-xl font-semibold">
+            Electrical Engineering enthusiast.
+          </p>
+        </motion.div>
+
+        {/* Circle/Square Container */}
+        <motion.div
+          ref={ref}
+          className="relative w-40 h-40 bg-light-200 rounded-lg mt-8 md:mt-0"
+          initial={{
+            opacity: 0,
+            scale: 0,
+            rotate: 0,
+          }}
+          animate={{
+            opacity: isInView ? 1 : 0,
+            scale: isInView ? 1 : 0,
+            rotate: isInView ? 360 : 0,
+            transition: { duration: 1, type: "spring" },
+          }}
+          whileHover={{
+            rotate: [0, 0, 90, 90, 180, 0],
+            scale: [1, 1.05, 1.05, 1, 1, 1],
+            borderRadius: ["10%", "10%", "50%", "50%", "50%", "10%"],
+            transition: {
+              rotate: { duration: 4, ease: "easeInOut", repeat: Infinity },
+              scale: { duration: 0.6, ease: "easeInOut" },
+              borderRadius: { duration: 0.6, ease: "easeInOut" },
             },
           }}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          {/* Text Section */}
-          <div>
-            <p className="font-poppins font-superbold text-6xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-              Hello! I'm Fatih <span className="text-light-200">.</span>
-            </p>
-            <p className="font-poppins text-xl font-semibold">
-              Electrical Engineering enthusiast.
-            </p>
-          </div>
-
-          {/* Character Section */}
-          <motion.div
-            className="flex justify-center items-center px-10"
-            variants={{
-              hidden: { opacity: 0, x: 100 },
-              visible: {
-                opacity: 1,
-                x: 0,
-                transition: { duration: 1, delay: 0.5 },
-              },
-            }}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 300 300"
-              className="w-64 h-64"
-            >
-              {/* Head */}
-              <circle cx="150" cy="90" r="50" fill="#F3A04D" />
-              {/* Hair */}
-              <path d="M100 60 Q150 0 200 60 Q180 30 150 30 Q120 30 100 60" fill="#000" />
-              <path d="M100 60 Q150 10 200 60 Q180 40 150 40 Q120 40 100 60" fill="#000" />
-              <path d="M100 60 Q150 20 200 60 Q180 50 150 50 Q120 50 100 60" fill="#000" />
-              {/* Body */}
-              <rect x="100" y="150" width="100" height="80" rx="20" fill="#3B82F6" />
-              {/* Eyes */}
-              <circle cx="130" cy="80" r="8" fill="#000" />
-              <circle cx="170" cy="80" r="8" fill="#000" />
-              {/* Mouth */}
-              <path
-                d="M135 110 Q150 125 165 110"
-                stroke="#000"
-                strokeWidth="3"
-                fill="none"
-              />
-              {/* Neck */}
-              <rect x="140" y="130" width="20" height="20" fill="#F3A04D" />
-            </svg>
-          </motion.div>
-        </motion.div>
+        />
       </div>
-    </>
+    </div>
   );
 }
 
