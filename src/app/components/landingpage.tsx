@@ -32,13 +32,6 @@ function LandingPage() {
 
   return (
     <div className="relative w-full overflow-hidden h-screen">
-      <div className="fixed w-full h-20 rounded-b-lg flex items-center justify-between px-8 z-50">
-        <div className="text-white font-bold bg-gray-800 rounded-2xl">
-          <button className="gap-4 font-serif font-semibold text-3xl py-2 px-4 text-yellow-300">Fatih</button>
-        </div>
-      </div>
-
-      {/* Background Image - Set to fototim1 */}
       <div className="w-full h-screen">
         <div className="fixed inset-0">
           <motion.div
@@ -54,8 +47,30 @@ function LandingPage() {
           />
         </div>
       </div>
-
-      {/* First Text */}
+      <div>
+      <motion.div
+      className="fixed inset-0 flex justify-center items-center"
+      variants={{
+        hidden: {left: 0},
+        visible: {left: "100%"}
+      }}
+      initial="hidden"
+      animate="visible"
+      transition={{
+        duration: 0.5,
+        ease: "easeIn"
+      }}
+      style={{
+        position: "absolute",
+        top: 4,
+        bottom: 4,
+        left: 0,
+        right: 0,
+        background: "#1f2937",
+        zIndex: 20,
+      }}
+      >
+      </motion.div>
       <motion.div
         className="fixed inset-0 flex justify-center items-center"
         variants={{
@@ -68,25 +83,26 @@ function LandingPage() {
           visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 1, delay: 0.2, ease: 'easeInOut' }, // Reduced duration
+            transition: { duration: 1, delay: 0.2, ease: 'easeInOut' }, 
             filter: "blur(0px)",
           },
           fadeOut: {
             opacity: 0,
             y: -50,
-            transition: { duration: 0.8, delay: 0.5, ease: 'easeInOut' }, // Reduced fade-out duration
+            transition: { duration: 0.8, delay: 0.5, ease: 'easeInOut' }, 
             filter: "blur(33px)",
           }
         }}
         initial="hidden" 
         animate={firstControl}
-      >
-        <p className="text-white font-serif font-bold text-center mt-4 text-2xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl">
+        >
+        <p className="text-white font-poppins font-extrabold text-center mt-4 text-2xl sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl">
           Hello, I&apos;m Muhammad Fatih Zamzami
         </p>
       </motion.div>
+        </div>
 
-      {/* Second Text */}
+
       <motion.div
         className="fixed inset-0 flex justify-center items-center"
         variants={{
@@ -99,19 +115,19 @@ function LandingPage() {
           visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 1, delay: 0.2, ease: 'easeInOut' }, // Reduced duration
+            transition: { duration: 1, delay: 0.2, ease: 'easeInOut' }, 
             filter: "blur(0px)",
           },
         }}
         initial="hidden"
         animate={secondControl}
       >
-        <p className="text-white font-serif font-bold text-center mt-4 text-2xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl">
+        <p className="text-white font-poppins font-extrabold text-center mt-4 text-2xl sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl">
           Welcome to my journey
         </p>
       </motion.div>
 
-      {/* Discover Button with Fade In Animation */}
+    
       {showButton && (
         <motion.div
           className="absolute bottom-8 left-0 right-0 flex justify-center items-center"
@@ -124,12 +140,12 @@ function LandingPage() {
             y: 0, 
             filter: "blur(0px)"}}
           transition={{
-            duration: 1.5, // Reduced duration
+            duration: 1.5, 
             ease: 'easeOut',
-            delay: 0.3 // Reduced delay
+            delay: 0.3 
           }}
         >
-          <button className="bg-gray-800 text-white hover:bg-white hover:text-gray-800 font-serif py-3 px-6 rounded-full text-xl font-semibold shadow-lg backdrop-blur-sm hover:bg-black/90 transition-colors">
+          <button className="bg-gray-800 text-white hover:bg-white hover:text-gray-800 font-poppins font-extrabold py-3 px-6 rounded-full text-xl font-semibold shadow-lg backdrop-blur-sm hover:bg-black/90 transition-colors">
             Discover More
           </button>
         </motion.div>
