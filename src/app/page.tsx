@@ -23,6 +23,28 @@ const Page = () => {
 
   return (
     <div>
+           <motion.div
+          className="fixed inset-0 flex justify-center items-center"
+          variants={{
+            hidden: { left: 0 },
+            visible: { left: "100%" },
+          }}
+          initial="hidden"
+          animate="visible"
+          transition={{
+            duration: 0.6,
+            ease: "easeIn",
+          }}
+          style={{
+            position: "absolute",
+            top: 4,
+            bottom: 4,
+            left: 0,
+            right: 0,
+            background: "#1f2937",
+            zIndex: 20,
+          }}
+        ></motion.div>
       <motion.div
         variants={{
           hidden: {
@@ -36,7 +58,7 @@ const Page = () => {
             opacity: 1,
             y: 0,
             transition: {
-              duration: 1.5,
+              duration: 0.5,
               ease: "easeOut"
             }}
       }}        
