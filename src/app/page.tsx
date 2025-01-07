@@ -15,11 +15,9 @@ const Page = () => {
   });
   const headerControl = useAnimation();
 
-  // Set up Lenis for smooth scrolling
   useEffect(() => {
     const lenis = new Lenis();
 
-    // Request Animation Frame for smooth scrolling
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -27,7 +25,6 @@ const Page = () => {
     
     requestAnimationFrame(raf);
 
-    // Cleanup on component unmount
     return () => {
       lenis.destroy();
     };
@@ -43,7 +40,6 @@ const Page = () => {
 
   return (
     <div>
-      {/* Header motion */}
       <motion.div
         variants={{
           hidden: {
@@ -76,15 +72,11 @@ const Page = () => {
         <Header />
       </motion.div>
 
-      {/* Landing Page */}
       <div ref={ref}>
         <LandingPage />
       </div>
 
-      {/* Main Page */}
       <MainPage />
-
-      {/* About Page */}
       <About />
     </div>
   );
