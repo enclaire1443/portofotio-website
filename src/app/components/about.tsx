@@ -1,7 +1,7 @@
 'use client';
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Reveal } from '../animations/reveal'; 
+import { Reveal } from '../animations/reveal';
 
 function About() {
   return (
@@ -11,6 +11,7 @@ function About() {
     </div>
   );
 }
+
 export default About;
 
 function ScreenOne() {
@@ -43,18 +44,18 @@ function ScreenOne() {
         }}
         className="absolute inset-0 p-4 rounded-2xl"
       ></motion.div>
-      <div className="absolute inset-0 flex justify-center items-center">
+      <div className="absolute inset-0 flex justify-center items-center z-10"> {/* z-index to bring text on top */}
         <Reveal>
-        <motion.h1
-          className="font-poppins font-superbold text-white"
-          style={{
-            scale: scaleText,
-            opacity: 1,
-            fontSize: 'clamp(5rem, 10vw, 9rem)' 
-          }}
+          <motion.h1
+            className="font-poppins font-superbold text-white"
+            style={{
+              scale: scaleText,
+              opacity: 1,
+              fontSize: 'clamp(5rem, 10vw, 9rem)' 
+            }}
           >
-          About <span className="text-light-200">Me</span>
-        </motion.h1>
+            About <span className="text-light-200">Me</span>
+          </motion.h1>
         </Reveal>
       </div>
     </motion.div>
@@ -62,7 +63,6 @@ function ScreenOne() {
 }
 
 function ScreenTwo() {
-  // The Slider Thingy Logic
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -72,7 +72,6 @@ function ScreenTwo() {
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
   const y = useTransform(scrollYProgress, [0, 1], [300, -300]);
   const opacity = useTransform(scrollYProgress, [0.15, 0.5, 0.85], [0, 1, 0]);
-  // The Slider Thingy Logic
 
   return (
     <motion.div
@@ -84,39 +83,38 @@ function ScreenTwo() {
         style={{ y, opacity }}
         className="relative flex flex-col lg:flex-row items-center justify-center w-full h-full space-y-8 lg:space-y-0 lg:space-x-8"
       >
-        <div className="flex flex-col justify-center space-y-6 max-w-xl text-center lg:text-left">
+        <div className="flex flex-col justify-center space-y-6 max-w-xl text-center lg:text-left relative z-10">
           <Reveal>
-          <p className="text-3xl sm:text-5xl text-black font-poppins font-superbold leading-tight">
-            I'm Muhammad <span className="text-light-200">Fatih</span> Zamzami
-          </p>
+            <p className="text-3xl sm:text-5xl text-black font-poppins font-superbold leading-tight">
+              I'm Muhammad <span className="text-light-200">Fatih</span> Zamzami
+            </p>
           </Reveal>
           <Reveal>
-          <p className="text-xl sm:text-2xl text-black/80 font-poppins font-extrabold">
-            I Study Electrical Engineering at <span className="text-light-200">Universitas Indonesia</span>
-          </p>
+            <p className="text-xl sm:text-2xl text-black/80 font-poppins font-extrabold">
+              I study Electrical Engineering at <span className="text-light-200">Universitas Indonesia</span>
+            </p>
           </Reveal>
           <Reveal>
-          <p className="text-lg sm:text-xl text-black/70 font-poppins font-extrabold leading-relaxed">
-            I'm a passionate and <span className="text-light-200">Driven</span> individual 
-            with a strong interest in technology and innovation. 
-            I'm always looking for ways to <span className="text-light-200">Improve and Learn</span> new things.
-          </p>
+            <p className="text-lg sm:text-xl text-black/70 font-poppins font-extrabold leading-relaxed">
+              I'm a passionate and <span className="text-light-200">Driven</span> individual 
+              with a strong interest in technology and innovation. 
+              I'm always looking for ways to <span className="text-light-200">Improve and Learn</span> new things.
+            </p>
           </Reveal>
         </div>
-
-        <div className="relative flex items-center justify-center lg:justify-end">
-          <div className="relative w-80 h-96">
-            <div className="absolute -top-4 -right-4 w-full h-full bg-light-200/20 rounded-xl" />
-            <div className="absolute -bottom-4 -left-4 w-full h-full bg-light-200/10 rounded-xl" />
-            <div className="relative w-full h-full bg-white rounded -xl overflow-hidden shadow-lg">
-              <img
-                src="/assets/fotodiri2.jpeg"
-                alt="Fatih"
-                className="w-full h-full object-cover"
-              />
+        <Reveal>
+          <div className="relative flex items-center justify-center lg:justify-end z-0 rounded-xl">
+            <div className="relative w-[35rem] h-[40rem]">
+              <div className="relative w-full h-full bg-white rounded-xl overflow-hidden shadow-lg">
+                <img
+                  src="/assets/fotodiri3.jpeg"
+                  alt="Fatih"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </motion.div>
     </motion.div>
   );

@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useTransform, useScroll } from "framer-motion";
 import { Reveal } from '../animations/reveal'; 
 
 function MainPage() {
@@ -14,8 +14,24 @@ function MainPage() {
   const handleExpand = () => setIsExpanded(true);
   const handleClose = () => setIsExpanded(false);
 
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["end end", "end start"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
   return (
-    <div className="relative h-screen bg-dark-300 z-0">
+    <motion.div 
+      className="h-screen relative bg-white" 
+      ref={targetRef}
+      style={{
+        scale,
+        opacity
+      }}
+    >
       <div className="absolute inset-0 bg-dark-300 z-0"></div>
       <div
         className="absolute top-0 right-0 bottom-0 left-0 bg-dark-200 z-10"
@@ -67,7 +83,6 @@ function MainPage() {
             </motion.div>
           </Reveal>
         </div>
-
         <motion.div
           ref={ref}
           className="w-40 h-40 bg-light-200 rounded-lg flex items-center justify-center z-20"
@@ -113,7 +128,7 @@ function MainPage() {
       {isExpanded && (
         <motion.div className="absolute inset-0 bg-light-200 z-40 m-10 rounded-xl py-12 px-16 overflow-y-auto">
           <button
-            className="absolute top-4 right-4 font-poppins font-superbold bg-dark-300 text-white py-1 px-2 rounded-xl"
+            className="absolute top-4 right-4 font-poppins font-superbold bg-dark-300 text-white py-1 px-2 rounded-lg"
             onClick={handleClose}
           >
             Close
@@ -134,7 +149,7 @@ function MainPage() {
           </div>
         </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 }
 
