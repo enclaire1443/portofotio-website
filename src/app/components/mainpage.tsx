@@ -10,7 +10,7 @@ function MainPage() {
   });
 
   return (
-    <div className="relative h-screen pt-20">
+    <div className="relative h-screen pt-20 bg-dark-300 z-0">
       <div
         className="absolute top-0 right-0 bottom-0 left-0 bg-dark-200"
         style={{
@@ -39,7 +39,7 @@ function MainPage() {
             Hello! I'm Fatih <span className="text-light-200">.</span>
           </p>
           <p className="font-poppins text-xl font-semibold">
-            And this is my personal page.
+            And this is my personal page
           </p>
         </motion.div>
 

@@ -5,14 +5,33 @@ import Header from './components/header';
 import LandingPage from './components/landingpage';
 import MainPage from './components/mainpage';
 import About from './components/about';
+import Lenis from '@studio-freight/lenis';
 
 const Page = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { 
-    amount: 0.9, 
+    amount: 0.8, 
     once: false
   });
   const headerControl = useAnimation();
+
+  // Set up Lenis for smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    // Request Animation Frame for smooth scrolling
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    
+    requestAnimationFrame(raf);
+
+    // Cleanup on component unmount
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     if (!isInView) {
@@ -24,61 +43,48 @@ const Page = () => {
 
   return (
     <div>
-           <motion.div
-          className="fixed inset-0 flex justify-center items-center"
-          variants={{
-            hidden: { left: 0 },
-            visible: { left: "100%" },
-          }}
-          initial="hidden"
-          animate="visible"
-          transition={{
-            duration: 0.6,
-            ease: "easeIn",
-          }}
-          style={{
-            position: "absolute",
-            top: 4,
-            bottom: 4,
-            left: 0,
-            right: 0,
-            background: "#1f2937",
-            zIndex: 20,
-          }}
-        ></motion.div>
+      {/* Header motion */}
       <motion.div
         variants={{
           hidden: {
             opacity: 0,
             x: 20,
             transition: {
-            duration: 0.5,
-            ease: "easeInOut",
-          }},
+              duration: 0.5,
+              ease: "easeInOut",
+            },
+          },
           visible: {
             opacity: 1,
             y: 0,
             transition: {
               duration: 0.5,
-              ease: "easeOut"
-            }}
-      }}        
+              ease: "easeOut",
+            },
+          },
+        }}
         initial={{ opacity: 0, y: 20 }}
         animate={headerControl}
-        style={{ 
+        style={{
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 50 
+          zIndex: 50,
         }}
       >
         <Header />
       </motion.div>
+
+      {/* Landing Page */}
       <div ref={ref}>
         <LandingPage />
       </div>
+
+      {/* Main Page */}
       <MainPage />
+
+      {/* About Page */}
       <About />
     </div>
   );

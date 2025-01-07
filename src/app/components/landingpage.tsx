@@ -49,12 +49,35 @@ function LandingPage() {
   }, []);
 
   return (
+
     <div className="relative w-full overflow-hidden h-screen">
-      {/* Parallax Effect */}
+      {/* Background motion div */}
+      <motion.div
+        className="w-full h-screen z-50"
+        variants={{
+          hidden: { left: 0 },
+          visible: { left: "100%" },
+        }}
+        initial="hidden"
+        animate="visible"
+        transition={{
+          duration: 0.6,
+          ease: "easeIn",
+        }}
+        style={{
+          position: "absolute",
+          top: 4,
+          bottom: 4,
+          left: 0,
+          right: 0,
+          background: "#1f2937",
+          zIndex: 20,
+        }}
+      ></motion.div>
       <div className="w-full h-screen">
         <div className="inset-0">
           <motion.div
-            ref={parallaxRef} // Attach ref for parallax effect
+            ref={parallaxRef}
             className="absolute w-full h-full"
             style={{
               backgroundImage: `url('/assets/fototim1.jpeg')`,
