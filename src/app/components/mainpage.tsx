@@ -5,8 +5,8 @@ import { motion, useInView } from "framer-motion";
 function MainPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, {
-    amount: 0.5, // Trigger when 50% of the element is visible
-    once: true, // Only trigger once
+    amount: 0.5,
+    once: true,
   });
 
   return (
@@ -19,9 +19,7 @@ function MainPage() {
         }}
       ></div>
 
-      {/* Content Section (Text and Circle) */}
       <div className="absolute top-[30%] left-[10%] flex flex-col md:flex-row items-center md:space-x-8 text-white">
-        {/* Text Section */}
         <motion.div
           ref={ref}
           className="flex flex-col items-start space-y-4"
@@ -41,11 +39,10 @@ function MainPage() {
             Hello! I'm Fatih <span className="text-light-200">.</span>
           </p>
           <p className="font-poppins text-xl font-semibold">
-            Electrical Engineering enthusiast.
+            And this is my personal page.
           </p>
         </motion.div>
 
-        {/* Circle/Square Container */}
         <motion.div
           ref={ref}
           className="relative w-40 h-40 bg-light-200 rounded-lg mt-8 md:mt-0"

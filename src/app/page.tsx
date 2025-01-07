@@ -4,17 +4,18 @@ import { motion, useInView, useAnimation } from 'framer-motion';
 import Header from './components/header';
 import LandingPage from './components/landingpage';
 import MainPage from './components/mainpage';
+import About from './components/about';
 
 const Page = () => {
-  const mainPageRef = useRef(null);
-  const isInView = useInView(mainPageRef, { 
-    amount: 0.5, 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { 
+    amount: 0.9, 
     once: false
   });
   const headerControl = useAnimation();
 
   useEffect(() => {
-    if (isInView) {
+    if (!isInView) {
       headerControl.start("visible")
     } else{
       headerControl.start("hidden")
@@ -74,10 +75,11 @@ const Page = () => {
       >
         <Header />
       </motion.div>
-      <LandingPage />
-      <div ref={mainPageRef}>
-        <MainPage />
+      <div ref={ref}>
+        <LandingPage />
       </div>
+      <MainPage />
+      <About />
     </div>
   );
 };
