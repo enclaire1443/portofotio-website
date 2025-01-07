@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { Reveal } from '../animations/reveal'; 
 
 function MainPage() {
   const ref = useRef(null);
@@ -23,48 +24,50 @@ function MainPage() {
         }}
       ></div>
 
-
       <div className="absolute top-[30%] left-[10%] flex flex-col md:flex-row gap-8 md:gap-12 items-center text-white z-30">
         <div className="overflow-hidden">
-          <motion.div
-            ref={ref}
-            className="flex flex-col items-start space-y-4"
-            initial={"hidden"}
-            animate={"visible"}
-            whileHover={"hovered"}
-          >
+          <Reveal>
             <motion.div
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  y: 50,
-                },
-                visible: {
-                  opacity: isInView ? 1 : 0,
-                  y: isInView ? 0 : 50,
-                  transition: { duration: 1 },
-                },
-                hovered: {
-                  background: "#FFFFFF",
-                  opacity: 1,
-                  y: "0%",
-                  color: "#000000",
-                  transition: {
-                    duration: 0.5,
-                    ease: "easeInOut",
-                  },
-                },
-              }}
+              ref={ref}
+              className="flex flex-col items-start space-y-4"
+              initial={"hidden"}
+              animate={"visible"}
+              whileHover={"hovered"}
             >
-              <p className="font-poppins font-superbold text-6xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-                Hello! I'm Fatih<span className="text-light-200">.</span>
-              </p>
-              <p className="font-poppins text-xl font-semibold">
-                And this is my personal &#40;experimental&#41; page
-              </p>
+              <motion.div
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 50,
+                  },
+                  visible: {
+                    opacity: isInView ? 1 : 0,
+                    y: isInView ? 0 : 50,
+                    transition: { duration: 1 },
+                  },
+                  hovered: {
+                    background: "#FFFFFF",
+                    opacity: 1,
+                    y: "0%",
+                    color: "#000000",
+                    transition: {
+                      duration: 0.5,
+                      ease: "easeInOut",
+                    },
+                  },
+                }}
+              >
+                <p className="font-poppins font-superbold text-6xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+                  Hello! I'm Fatih<span className="text-light-200">.</span>
+                </p>
+                <p className="font-poppins text-xl font-semibold">
+                  And this is my personal &#40;<span className="text-light-200">experimental</span>&#41; page
+                </p>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </Reveal>
         </div>
+
         <motion.div
           ref={ref}
           className="w-40 h-40 bg-light-200 rounded-lg flex items-center justify-center z-20"
