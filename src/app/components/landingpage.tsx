@@ -51,7 +51,6 @@ function LandingPage() {
   return (
 
     <div className="relative w-full overflow-hidden h-screen">
-      {/* Background motion div */}
       <motion.div
         className="w-full h-screen z-50"
         variants={{
@@ -70,7 +69,7 @@ function LandingPage() {
           bottom: 4,
           left: 0,
           right: 0,
-          background: "#1f2937",
+          background: "#fad643",
           zIndex: 20,
         }}
       ></motion.div>
@@ -92,7 +91,6 @@ function LandingPage() {
         </div>
       </div>
 
-      {/* Motion Content */}
       <div>
         <motion.div
           className="z-20 absolute inset-0 flex justify-center items-center"
