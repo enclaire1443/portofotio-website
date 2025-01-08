@@ -1,7 +1,6 @@
-"use client";
 import React, { useRef, useState } from "react";
 import { motion, useInView, useTransform, useScroll } from "framer-motion";
-import { Reveal } from '../animations/reveal'; 
+import { Reveal } from "../animations/reveal";
 
 function MainPage() {
   const ref = useRef(null);
@@ -17,19 +16,20 @@ function MainPage() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["end end", "end start"],
+    offset: ["start end", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.9, 1], [1, 1, 0]);
+
+  // PROBLEM WITH THE STICKY EFFECT WHERE IT STICKS EVEN AFTER THE NEXT PAGE
 
   return (
-    <motion.div 
-      className="h-screen relative bg-white" 
+    <motion.div
+      className="sticky h-screen bg-white"
       ref={targetRef}
       style={{
-        scale,
-        opacity
+        opacity,
+        top: 0,
       }}
     >
       <div className="absolute inset-0 bg-dark-300 z-0"></div>
@@ -46,9 +46,9 @@ function MainPage() {
             <motion.div
               ref={ref}
               className="flex flex-col items-start space-y-4"
-              initial={"hidden"}
-              animate={"visible"}
-              whileHover={"hovered"}
+              initial="hidden"
+              animate="visible"
+              whileHover="hovered"
             >
               <motion.div
                 variants={{
@@ -77,7 +77,8 @@ function MainPage() {
                   Hello! I'm Fatih<span className="text-light-200">.</span>
                 </p>
                 <p className="font-poppins text-xl font-semibold">
-                  And this is my personal &#40;<span className="text-light-200">experimental</span>&#41; page
+                  And this is my personal &#40;
+                  <span className="text-light-200">experimental</span>&#41; page
                 </p>
               </motion.div>
             </motion.div>
@@ -104,7 +105,11 @@ function MainPage() {
                   scale: [1, 1.05, 1.05, 1, 1, 1],
                   borderRadius: ["10%", "10%", "50%", "50%", "50%", "10%"],
                   transition: {
-                    rotate: { duration: 4, ease: "easeInOut", repeat: Infinity },
+                    rotate: {
+                      duration: 4,
+                      ease: "easeInOut",
+                      repeat: Infinity,
+                    },
                     scale: { duration: 0.6, ease: "easeInOut" },
                     borderRadius: { duration: 0.6, ease: "easeInOut" },
                   },

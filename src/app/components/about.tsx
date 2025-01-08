@@ -5,7 +5,7 @@ import { Reveal } from '../animations/reveal';
 
 function About() {
   return (
-    <div className="w-full h-[200vh]">
+    <div className="w-full h-[200h] bg-white">
       <ScreenOne />
       <ScreenTwo />
     </div>
@@ -26,6 +26,7 @@ function ScreenOne() {
   const scaleText = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
 
   return (
+    <div className="bg-white w-full h-screen">
     <motion.div 
       className="h-screen relative bg-white" 
       ref={targetRef}
@@ -33,7 +34,7 @@ function ScreenOne() {
         scale,
         opacity
       }}
-    >
+      >
       <motion.div
         style={{
           backgroundImage: `url('/assets/fototim2.jpeg')`,
@@ -43,7 +44,7 @@ function ScreenOne() {
           margin: 60
         }}
         className="absolute inset-0 p-4 rounded-2xl"
-      ></motion.div>
+        ></motion.div>
       <div className="absolute inset-0 flex justify-center items-center z-10"> {/* z-index to bring text on top */}
         <Reveal>
           <motion.h1
@@ -53,12 +54,13 @@ function ScreenOne() {
               opacity: 1,
               fontSize: 'clamp(5rem, 10vw, 9rem)' 
             }}
-          >
+            >
             About <span className="text-light-200">Me</span>
           </motion.h1>
         </Reveal>
       </div>
     </motion.div>
+    </div>
   );
 }
 
@@ -68,21 +70,23 @@ function ScreenTwo() {
     target: targetRef,
     offset: ["start end", "end start"],
   });
-
+  
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
   const y = useTransform(scrollYProgress, [0, 1], [300, -300]);
   const opacity = useTransform(scrollYProgress, [0.15, 0.5, 0.85], [0, 1, 0]);
 
   return (
+    <div className="bg-white w-full h-screen">
+
     <motion.div
       ref={targetRef}
       className="relative h-screen bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl overflow-hidden"
       style={{ scale }}
-    >
+      >
       <motion.div
         style={{ y, opacity }}
         className="relative flex flex-col lg:flex-row items-center justify-center w-full h-full space-y-8 lg:space-y-0 lg:space-x-8"
-      >
+        >
         <div className="flex flex-col justify-center space-y-6 max-w-xl text-center lg:text-left relative z-10">
           <Reveal>
             <p className="text-3xl sm:text-5xl text-black font-poppins font-superbold leading-tight">
@@ -98,24 +102,25 @@ function ScreenTwo() {
             <p className="text-lg sm:text-xl text-black/70 font-poppins font-extrabold leading-relaxed">
               I'm a passionate and <span className="text-light-200">Driven</span> individual 
               with a strong interest in technology and innovation. 
-              I'm always looking for ways to <span className="text-light-200">Improve and Learn</span> new things.
+              I'm always looking for ways to <span className="text-light-200">Improve and Learn</span> new things!
             </p>
           </Reveal>
         </div>
         <Reveal>
-          <div className="relative flex items-center justify-center lg:justify-end z-0 rounded-xl">
+          <motion.div className="relative flex items-center justify-center lg:justify-end z-0 rounded-xl">
             <div className="relative w-[35rem] h-[40rem]">
               <div className="relative w-full h-full bg-white rounded-xl overflow-hidden shadow-lg">
                 <img
                   src="/assets/fotodiri3.jpeg"
                   alt="Fatih"
                   className="w-full h-full object-cover"
-                />
+                  />
               </div>
             </div>
-          </div>
+          </motion.div>
         </Reveal>
       </motion.div>
     </motion.div>
+      </div>
   );
 }
