@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { Reveal } from '../animations/reveal';
 
 function About() {
@@ -95,14 +95,14 @@ function ScreenTwo() {
           </Reveal>
           <Reveal>
             <p className="text-xl sm:text-2xl text-black/80 font-poppins font-extrabold">
-              I study Electrical Engineering at <span className="text-light-200">Universitas Indonesia</span>
+              I study <span className="text-light-200">Electrical Engineering</span> at Universitas Indonesia
             </p>
           </Reveal>
           <Reveal>
             <p className="text-lg sm:text-xl text-black/70 font-poppins font-extrabold leading-relaxed">
               I'm a passionate and <span className="text-light-200">Driven</span> individual 
               with a strong interest in technology and innovation. 
-              I'm always looking for ways to <span className="text-light-200">Improve and Learn</span> new things!
+              And hey, i'm always looking for ways to <span className="text-light-200">improve and learn</span> new things!
             </p>
           </Reveal>
         </div>

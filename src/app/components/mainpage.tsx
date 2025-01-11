@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { motion, useInView, useTransform, useScroll } from "framer-motion";
+import { motion, useInView, useScroll } from "motion/react";
 import { Reveal } from "../animations/reveal";
 
 function MainPage() {
@@ -19,28 +19,23 @@ function MainPage() {
     offset: ["start end", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.9, 1], [1, 1, 0]);
-
-  // PROBLEM WITH THE STICKY EFFECT WHERE IT STICKS EVEN AFTER THE NEXT PAGE
-
   return (
     <motion.div
       className="sticky h-screen bg-white"
       ref={targetRef}
       style={{
-        opacity,
         top: 0,
       }}
     >
-      <div className="absolute inset-0 bg-dark-300 z-0"></div>
+      <div className="absolute inset-0 bg-gray-50 z-0"></div>
       <div
-        className="absolute top-0 right-0 bottom-0 left-0 bg-dark-200 z-10"
+        className="absolute top-0 right-0 bottom-0 left-0 bg-gray-100 z-10"
         style={{
           clipPath: "polygon(100% 0%, 100% 100%, 50% 100%)",
         }}
       ></div>
 
-      <div className="absolute top-[30%] left-[10%] flex flex-col md:flex-row gap-8 md:gap-12 items-center text-white z-30">
+      <div className="absolute top-[30%] left-[10%] flex flex-col md:flex-row gap-8 md:gap-12 items-center text-gray-800 z-30">
         <div className="overflow-hidden">
           <Reveal>
             <motion.div
@@ -74,11 +69,11 @@ function MainPage() {
                 }}
               >
                 <p className="font-poppins font-superbold text-6xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-                  Hello! I'm Fatih<span className="text-light-200">.</span>
+                  Hello! I'm Fatih<span className="text-yellow-400">.</span>
                 </p>
                 <p className="font-poppins text-xl font-semibold">
                   And this is my personal &#40;
-                  <span className="text-light-200">experimental</span>&#41; page
+                  <span className="text-yellow-400">experimental</span>&#41; page
                 </p>
               </motion.div>
             </motion.div>
@@ -86,7 +81,7 @@ function MainPage() {
         </div>
         <motion.div
           ref={ref}
-          className="w-40 h-40 bg-light-200 rounded-lg flex items-center justify-center z-20"
+          className="w-40 h-40 bg-yellow-400 rounded-lg flex items-center justify-center z-20"
           initial={{
             opacity: 0,
             scale: 0,
@@ -101,17 +96,15 @@ function MainPage() {
           whileHover={
             !isExpanded
               ? {
-                  rotate: [0, 0, 90, 90, 180, 0],
-                  scale: [1, 1.05, 1.05, 1, 1, 1],
-                  borderRadius: ["10%", "10%", "50%", "50%", "50%", "10%"],
+                  rotate: [0, 45, 90, 135, 180, 225, 270, 315, 360],
+                  scale: [1, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1],
+                  borderRadius: ["10%", "15%", "20%", "25%", "30%", "25%", "20%", "15%", "10%"],
                   transition: {
-                    rotate: {
-                      duration: 4,
-                      ease: "easeInOut",
-                      repeat: Infinity,
-                    },
-                    scale: { duration: 0.6, ease: "easeInOut" },
-                    borderRadius: { duration: 0.6, ease: "easeInOut" },
+                    duration: 6,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    times: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1],
                   },
                 }
               : {}
@@ -131,24 +124,24 @@ function MainPage() {
       </div>
 
       {isExpanded && (
-        <motion.div className="absolute inset-0 bg-light-200 z-40 m-10 rounded-xl py-12 px-16 overflow-y-auto">
+        <motion.div className="absolute inset-0 bg-yellow-400 z-40 m-10 rounded-xl py-12 px-16 overflow-y-auto">
           <button
-            className="absolute top-4 right-4 font-poppins font-superbold bg-dark-300 text-white py-1 px-2 rounded-lg"
+            className="absolute top-4 right-4 font-poppins font-superbold bg-gray-800 text-white py-1 px-2 rounded-lg"
             onClick={handleClose}
           >
             Close
           </button>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full h-full">
-            <div className="w-full h-full font-poppins font-superbold bg-light-300 rounded-lg flex items-center justify-center">
+            <div className="w-full h-full font-poppins font-superbold bg-white text-gray-800 rounded-lg flex items-center justify-center">
               Pretend
             </div>
-            <div className="w-full h-full font-poppins font-superbold bg-light-300 rounded-lg flex items-center justify-center">
+            <div className="w-full h-full font-poppins font-superbold bg-white text-gray-800 rounded-lg flex items-center justify-center">
               There Is
             </div>
-            <div className="w-full h-full font-poppins font-superbold bg-light-300 rounded-lg flex items-center justify-center">
+            <div className="w-full h-full font-poppins font-superbold bg-white text-gray-800 rounded-lg flex items-center justify-center">
               Some good content
             </div>
-            <div className="w-full h-full font-poppins font-superbold bg-light-300 rounded-lg flex items-center justify-center">
+            <div className="w-full h-full font-poppins font-superbold bg-white text-gray-800 rounded-lg flex items-center justify-center">
               In This Boxes.... Please
             </div>
           </div>

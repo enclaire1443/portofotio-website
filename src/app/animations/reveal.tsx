@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useRef } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView, useAnimation } from "motion/react";
 
 interface Props {
   children: React.ReactNode;
@@ -37,7 +37,7 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
           bottom: 4,
           left: 0,
           right: 0,
-          background: "#dbb42c",
+          background: "#ffe169",
           zIndex: 20,
         }}
       />

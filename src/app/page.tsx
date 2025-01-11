@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useEffect } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+import { motion, useInView, useAnimation } from 'motion/react';
 import Header from './components/header';
 import LandingPage from './components/landingpage';
 import MainPage from './components/mainpage';
@@ -75,8 +75,10 @@ const Page = () => {
       <div ref={ref}>
         <LandingPage />
       </div>
+      <div className="h-[100vh]">
+        <MainPage />
+      </div>
 
-      <MainPage />
       <About />
     </div>
   );

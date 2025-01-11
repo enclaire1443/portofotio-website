@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 function LandingPage() {
   const [firstControl, setFirstControl] = useState("hidden");

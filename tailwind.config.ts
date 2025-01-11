@@ -47,6 +47,13 @@ export default {
         fototim2: "url('/assets/fototim2.jpeg')",
         fototim3: "url('/assets/fototim3.jpeg')",
       },
+      zIndex: {
+        "60" : "60",
+        "70" : "70",
+        "80" : "80",
+        "90" : "90",
+        '100': '100',
+      }
     },
   },
   plugins: [],
