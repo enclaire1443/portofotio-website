@@ -4,10 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const menuItems = [
   { id: 1, title: "Home", size: "medium" },
-  { id: 2, title: "About Me", size: "medium" },
+  { id: 2, title: "About Me", size: "large" },
   { id: 3, title: "Portfolio", size: "large" },
   { id: 4, title: "Contact Me", size: "small" },
-  { id: 5, title: "Experience", size: "medium" },
+  { id: 5, title: "Card 1", size: "medium" },
+  { id: 6, title: "Card 2", size: "medium" },
 ];
 
 function Header() {
@@ -68,8 +69,9 @@ function Header() {
                       item.size === "large" 
                         ? "md:col-span-2" 
                         : item.size === "small" 
-                        ? "md:row-span-1" 
-                        : ""
+                        ? "md:row-span-2" 
+                        : item.size === "medium"
+                        ? "md:col-span-1" : ""
                     }`}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
