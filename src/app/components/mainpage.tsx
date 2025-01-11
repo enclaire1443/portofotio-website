@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { motion, useInView, useScroll } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { Reveal } from "../animations/reveal";
 
 function MainPage() {
