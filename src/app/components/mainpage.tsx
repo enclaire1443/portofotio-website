@@ -14,10 +14,6 @@ function MainPage() {
   const handleClose = () => setIsExpanded(false);
 
   const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start end", "end start"],
-  });
 
   return (
     <motion.div

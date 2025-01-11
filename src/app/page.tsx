@@ -44,7 +44,7 @@ const Page = () => {
         variants={{
           hidden: {
             opacity: 0,
-            x: 20,
+            y: 50,
             transition: {
               duration: 0.5,
               ease: "easeInOut",
