@@ -41,7 +41,6 @@ function Header() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               onClick={toggleMenu}
             >
-
               <motion.div
                 className="absolute top-20 sm:top-40 w-full text-center z-50"
                 initial={{ y: -20, opacity: 0 }}
@@ -66,8 +65,11 @@ function Header() {
                   <motion.div
                     key={item.id}
                     className={`bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 flex items-center justify-center text-center ${
-                      item.size === "large" ? "md:col-span-2" 
-                      : "small" ? "md:row-span-1" : ""
+                      item.size === "large" 
+                        ? "md:col-span-2" 
+                        : item.size === "small" 
+                        ? "md:row-span-1" 
+                        : ""
                     }`}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
