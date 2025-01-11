@@ -100,7 +100,7 @@ function ScreenTwo() {
             </Reveal>
             <Reveal>
               <p className="text-lg sm:text-xl text-black/70 font-poppins font-black leading-relaxed">
-                This is my personal <span className="text-light-200">page</span> where i experiment about things that i learned !
+                This is my personal <span className="text-light-200">page</span> where I experiment about things that I learned!
                 And hey, im alway passionate to <span className="text-light-200">improve and learn</span> new things along the way...
                 Click the "Fatih" button above to find out <span className="text-light-200">more</span> !!
               </p>
