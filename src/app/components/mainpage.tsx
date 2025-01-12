@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "motion/react";
 import { Reveal } from "../animations/reveal";
 
 function MainPage() {
@@ -77,30 +77,125 @@ function MainPage() {
         </motion.div>
       </div>
 
-      {isExpanded && (
-        <motion.div className="absolute inset-0 bg-yellow-400 z-40 m-10 rounded-xl py-12 px-16 overflow-y-auto">
-          <button
-            className="absolute top-4 right-4 font-poppins font-superbold bg-gray-800 text-white py-1 px-2 rounded-lg"
-            onClick={handleClose}
+<AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            className="absolute inset-0 z-40 m-4 sm:m-8 md:m-12 rounded-xl py-8 sm:py-12 md:py-16 px-4 sm:px-8 md:px-20 overflow-y-auto"
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            Close
-          </button>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full h-full">
-            <div className="w-full h-full font-poppins font-superbold bg-white text-gray-800 rounded-lg flex items-center justify-center">
-              Pretend
-            </div>
-            <div className="w-full h-full font-poppins font-superbold bg-white text-gray-800 rounded-lg flex items-center justify-center">
-              There Is
-            </div>
-            <div className="w-full h-full font-poppins font-superbold bg-white text-gray-800 rounded-lg flex items-center justify-center">
-              Some good content
-            </div>
-            <div className="w-full h-full font-poppins font-superbold bg-white text-gray-800 rounded-lg flex items-center justify-center">
-              In This Boxes.... Please
-            </div>
-          </div>
-        </motion.div>
-      )}
+            {/* Animated Background */}
+            <motion.div
+              className="absolute inset-0 bg-[#1a1a1a] rounded-xl overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <motion.div
+                className="absolute inset-0"
+                animate={{
+                  background: [
+                    "linear-gradient(45deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%)",
+                    "linear-gradient(45deg, #2a2a2a 0%, #1a1a1a 50%, #2a2a2a 100%)",
+                    "linear-gradient(45deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%)",
+                  ],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            </motion.div>
+
+            {/* Floating Particles */}
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-yellow-400 rounded-full"
+                initial={{
+                  x: Math.random() * window.innerWidth,
+                  y: Math.random() * window.innerHeight,
+                  opacity: 0,
+                  scale: 0,
+                }}
+                animate={{
+                  x: Math.random() * window.innerWidth,
+                  y: Math.random() * window.innerHeight,
+                  opacity: [0, 1, 0],
+                  scale: [0, 1.5, 0],
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                }}
+              />
+            ))}
+
+            {/* Close Button */}
+            <motion.button
+              className="absolute top-4 sm:top-6 right-4 sm:right-6 font-poppins font-bold bg-[#333333] text-white py-1 sm:py-2 px-2 sm:px-4 rounded-lg hover:bg-[#444444] transition-colors z-50"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              onClick={handleClose}
+            >
+              Close
+            </motion.button>
+
+            {/* Quote Generator Section */}
+            <motion.div
+              className="w-full h-full flex flex-col items-center justify-center relative z-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <motion.h2
+                className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl mb-6 text-white text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                Inspirational Quote
+              </motion.h2>
+              <motion.p
+                className="font-poppins text-lg sm:text-xl md:text-2xl text-gray-300 italic mb-8 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                "Creativity is intelligence having fun."
+              </motion.p>
+              <motion.button
+                className="font-poppins font-semibold bg-[#333333] text-white py-2 px-6 rounded-lg hover:bg-[#444444] transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                onClick={() => {
+                  const quotes = [
+                    "The only limit is your imagination.",
+                    "Do what you love, love what you do.",
+                    "Simplicity is the ultimate sophistication.",
+                    "Every great design begins with an even better story.",
+                  ];
+                  const randomQuote =
+                    quotes[Math.floor(Math.random() * quotes.length)];
+                  alert(randomQuote);
+                }}
+              >
+                New Quote
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
