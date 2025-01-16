@@ -9,7 +9,10 @@ interface Props {
 
 export const Reveal = ({ children, width = "fit-content" }: Props) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { 
+    once: true,
+    amount: 0.5,
+  });
 
   const mainControls = useAnimation();
   const slideControls = useAnimation();
