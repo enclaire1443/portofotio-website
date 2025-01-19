@@ -34,6 +34,9 @@ function Main() {
                   And this is my personal &#40;
                   <span className="text-yellow-400">experimental</span>&#41; page
                 </p>
+                <p className="font-poppins text-xl font-semibold">
+                  click the <span className="text-yellow-400">Fatih</span> button above for more !
+                </p>
               </motion.div>
             </motion.div>
           </Reveal>

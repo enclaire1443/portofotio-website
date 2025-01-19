@@ -1,11 +1,10 @@
 "use client";
 import { useRef, useEffect } from "react";
-import { motion, useInView, useAnimation } from "motion/react";
+import { motion, useInView, useAnimation } from "framer-motion";
 import Header from "../components/header";
 import LandingPage from "./landingpage";
 import Main from "./main";
-import About from "./about";
-import Lenis from "@studio-freight/lenis";
+import ClientLayout from "../client_layout";
 
 const Page = () => {
   const ref = useRef(null);
@@ -16,35 +15,20 @@ const Page = () => {
   const headerControl = useAnimation();
 
   useEffect(() => {
-    const lenis = new Lenis();
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isInView) {
-      headerControl.start("visible");
-    } else {
+    if (isInView) {
       headerControl.start("hidden");
+    } else {
+      headerControl.start("visible");
     }
   }, [isInView, headerControl]);
 
   return (
-    <div>
+    <ClientLayout>
       <motion.div
         variants={{
           hidden: {
             opacity: 0,
-            y: 50,
+            y: -50,
             transition: {
               duration: 0.5,
               ease: "easeInOut",
@@ -59,7 +43,7 @@ const Page = () => {
             },
           },
         }}
-        initial={{ opacity: 0, y: 20 }}
+        initial="hidden"
         animate={headerControl}
         style={{
           position: "fixed",
@@ -78,9 +62,7 @@ const Page = () => {
       <div className="h-[100vh]">
         <Main />
       </div>
-
-      <About />
-    </div>
+    </ClientLayout>
   );
 };
 

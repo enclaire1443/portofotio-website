@@ -4,12 +4,12 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 
 const menuItems = [
-  { id: 1, title: "Home", size: "", href: "/mainpage" },
-  { id: 2, title: "About Me", size: "large", href: "/about" },
-  { id: 3, title: "Portfolio", size: "large", href: "/portfolio" },
-  { id: 4, title: "Contact Me", size: "2row", href: "/contactme" },
-  { id: 5, title: "Card 1", size: "", href: "/card1" },
-  { id: 6, title: "Card 2", size: "", href: "/card2" },
+  { id: 1, title: "Home", href: "/mainpage" },
+  { id: 2, title: "About Me", href: "/aboutme" },
+  { id: 3, title: "Portfolio", href: "/portfolio" },
+  { id: 4, title: "Contact Me", href: "/contactme" },
+  { id: 5, title: "Card 1", href: "/card1" },
+  { id: 6, title: "Card 2", href: "/card2" },
 ]
 
 function Header() {
@@ -73,13 +73,8 @@ function Header() {
               {menuItems.map((item) => (
                 <Link key={item.id} href={item.href}>
                   <motion.div
-                    className={`bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 flex items-center justify-center text-center ${
-                      item.size === "large"
-                        ? "md:col-span-2"
-                        : item.size === "2row"
-                        ? "md:row-span-2"
-                        : "md:col-span-1"
-                    }`}
+                    className={`bg-white/10 backdrop-blur-sm rounded-xl shadow-lg p-6 flex items-center justify-center text-center
+                    `}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}

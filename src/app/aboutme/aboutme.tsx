@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Reveal } from '../animations/reveal'
 
 function About() {
-  
   return (
     <div className="w-full bg-white">
       <ScreenOne />
@@ -56,7 +55,7 @@ function ScreenOne() {
                 fontSize: 'clamp(5rem, 10vw, 9rem)' 
               }}
             >
-              Who am <span className="text-light-200">I</span>?
+                About <span className="text-light-200">Me</span>
             </motion.h1>
           </Reveal>
         </div>
@@ -85,24 +84,22 @@ function ScreenTwo() {
       >
         <motion.div
           style={{ y, opacity }}
-          className="relative flex flex-col lg:flex-row items-center justify-center w-full h-full space-y-8 lg:space-y-0 lg:space-x-8 px-4 sm:px-8" // Added padding for smaller screens
+          className="relative flex flex-col lg:flex-row items-center justify-center w-full h-full space-y-8 lg:space-y-0 lg:space-x-8 px-4 sm:px-8" 
         >
           <div className="flex flex-col justify-center space-y-6 max-w-xl text-center lg:text-left relative z-10">
             <Reveal>
               <p className="text-3xl sm:text-5xl text-black font-poppins font-black leading-tight">
-                My name is Muhammad <span className="text-light-200">Fatih</span> Zamzami
+                Hello! My name is Muhammad <span className="text-light-200">Fatih Zamzami</span>.
               </p>
             </Reveal>
             <Reveal>
               <p className="text-xl sm:text-2xl text-black/80 font-poppins font-black">
-                Im studying <span className="text-light-200">Electrical Engineering</span> at Universitas Indonesia
+                I’m currently pursuing a degree in <span className="text-light-200">Electrical Engineering</span> at Universitas Indonesia, where I explore the intersection of innovation and technology.
               </p>
             </Reveal>
             <Reveal>
               <p className="text-lg sm:text-xl text-black/70 font-poppins font-black leading-relaxed">
-                This is my personal <span className="text-light-200">page</span> where I experiment about things that I learned!
-                And hey, im alway passionate to <span className="text-light-200">improve and learn</span> new things along the way...
-                Click the "Fatih" button above to find out <span className="text-light-200">more</span> !!
+                This page is a glimpse into my journey of learning, experimenting, and growing. I’m passionate about discovering new ideas, tackling challenges, and continuously improving along the way. Through this platform, I also aim to share insights from my experiences and connect with like-minded individuals.
               </p>
             </Reveal>
           </div>

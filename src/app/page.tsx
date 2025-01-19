@@ -1,5 +1,11 @@
 import MainPage from "./mainpage/page"
+import ClientLayout from "./client_layout"
+
 
 export default function Home() {
-  return <MainPage />
+  return (
+    <ClientLayout>
+      <main><MainPage /></main>
+    </ClientLayout>
+  );
 }
