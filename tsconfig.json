@@ -27,7 +27,11 @@
       ],
       "@contactme/*": [
         "./src/contactme/*"
+      ],
+      "@biodata/*": [
+        "./src/biodata/*"
       ]
+
     },
     "plugins": [
       {

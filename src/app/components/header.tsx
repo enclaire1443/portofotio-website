@@ -6,10 +6,10 @@ import Link from "next/link"
 const menuItems = [
   { id: 1, title: "Home", href: "/mainpage" },
   { id: 2, title: "About Me", href: "/aboutme" },
-  { id: 3, title: "Portfolio", href: "/portfolio" },
-  { id: 4, title: "Contact Me", href: "/contactme" },
-  { id: 5, title: "Card 1", href: "/card1" },
-  { id: 6, title: "Card 2", href: "/card2" },
+  { id: 3, title: "Portofolio", href: "/biodata" },
+  { id: 4, title: "Coming Soon", href: "/" },
+  { id: 5, title: "Coming Soon", href: "/" },
+  { id: 6, title: "Contact Me", href: "/contactme"},
 ]
 
 function Header() {
