@@ -90,7 +90,6 @@ function LandingPage() {
           <div className="absolute inset-0 bg-black opacity-40 z-10" />
         </div>
       </div>
-
       <div>
         <motion.div
           className="z-20 absolute inset-0 flex justify-center items-center"

@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { Reveal } from "../animations/reveal";
 
-function MainPage() {
+function Main() {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.5, once: true });
   const [isExpanded, setIsExpanded] = useState(false);
@@ -86,7 +86,6 @@ function MainPage() {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            {/* Animated Background */}
             <motion.div
               className="absolute inset-0 bg-[#1a1a1a] rounded-xl overflow-hidden"
               initial={{ opacity: 0 }}
@@ -111,7 +110,6 @@ function MainPage() {
               />
             </motion.div>
 
-            {/* Floating Particles */}
             {[...Array(20)].map((_, i) => (
               <motion.div
                 key={i}
@@ -136,7 +134,6 @@ function MainPage() {
               />
             ))}
 
-            {/* Close Button */}
             <motion.button
               className="absolute top-4 sm:top-6 right-4 sm:right-6 font-poppins font-bold bg-[#333333] text-white py-1 sm:py-2 px-2 sm:px-4 rounded-lg hover:bg-[#444444] transition-colors z-50"
               initial={{ opacity: 0, y: -20 }}
@@ -148,7 +145,6 @@ function MainPage() {
               Close
             </motion.button>
 
-            {/* Quote Generator Section */}
             <motion.div
               className="w-full h-full flex flex-col items-center justify-center relative z-10"
               initial={{ opacity: 0, y: 20 }}
@@ -200,4 +196,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default Main;
