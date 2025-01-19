@@ -1,15 +1,15 @@
-"use client";
-import React, { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "motion/react";
-import { Reveal } from "../animations/reveal";
+"use client"
+import React, { useRef, useState } from "react"
+import { motion, useInView, AnimatePresence } from "motion/react"
+import { Reveal } from "../animations/reveal"
 
 function Main() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.5, once: true });
-  const [isExpanded, setIsExpanded] = useState(false);
+  const isInView = useInView(ref, { amount: 0.5, once: true })
+  const [isExpanded, setIsExpanded] = useState(false)
 
-  const handleExpand = () => setIsExpanded(true);
-  const handleClose = () => setIsExpanded(false);
+  const handleExpand = () => setIsExpanded(true)
+  const handleClose = () => setIsExpanded(false)
 
   return (
     <motion.div className="sticky h-screen bg-white" style={{ top: 0 }}>
@@ -180,10 +180,10 @@ function Main() {
                     "Do what you love, love what you do.",
                     "Simplicity is the ultimate sophistication.",
                     "Every great design begins with an even better story.",
-                  ];
+                  ]
                   const randomQuote =
-                    quotes[Math.floor(Math.random() * quotes.length)];
-                  alert(randomQuote);
+                    quotes[Math.floor(Math.random() * quotes.length)]
+                  alert(randomQuote)
                 }}
               >
                 New Quote
@@ -193,7 +193,7 @@ function Main() {
         )}
       </AnimatePresence>
     </motion.div>
-  );
+  )
 }
 
 export default Main;

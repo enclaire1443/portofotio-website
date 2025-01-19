@@ -1,7 +1,7 @@
-'use client';
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Reveal } from '../animations/reveal';
+"use client"
+import React, { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { Reveal } from '../animations/reveal'
 
 function About() {
   
@@ -20,11 +20,11 @@ function ScreenOne() {
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["end end", "end start"],
-  });
+  })
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const scaleText = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.7])
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
+  const scaleText = useTransform(scrollYProgress, [0, 1], [1, 0.8])
 
   return (
     <div className="bg-white w-full h-screen">
@@ -62,7 +62,7 @@ function ScreenOne() {
         </div>
       </motion.div>
     </div>
-  );
+  )
 }
 
 function ScreenTwo() {
@@ -70,11 +70,11 @@ function ScreenTwo() {
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start end", "end start"],
-  });
+  })
   
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
-  const y = useTransform(scrollYProgress, [0, 1], [300, -300]);
-  const opacity = useTransform(scrollYProgress, [0.15, 0.5, 0.85], [0, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
+  const y = useTransform(scrollYProgress, [0, 1], [300, -300])
+  const opacity = useTransform(scrollYProgress, [0.15, 0.5, 0.85], [0, 1, 0])
 
   return (
     <div className="bg-white w-full h-screen">
@@ -122,5 +122,5 @@ function ScreenTwo() {
         </motion.div>
       </motion.div>
     </div>
-  );
+  )
 }

@@ -1,8 +1,8 @@
-"use client";
-import React from 'react';
-import { motion, easeInOut } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub, faInstagram, faLine } from '@fortawesome/free-brands-svg-icons';
+"use client"
+import React from 'react'
+import { motion, easeInOut } from 'framer-motion'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedin, faGithub, faInstagram, faLine } from '@fortawesome/free-brands-svg-icons'
 
 const socials = [
   {
@@ -29,7 +29,7 @@ const socials = [
     icon: faGithub,
     bgColor: 'bg-blue-800',
   },
-];
+]
 
 function ContactMe() {
   return (
@@ -54,7 +54,7 @@ function ContactMe() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default ContactMe;
+export default ContactMe

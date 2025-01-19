@@ -1,10 +1,10 @@
-'use client';
-import React, { useEffect, useRef } from "react";
-import { motion, useInView, useAnimation } from "motion/react";
+"use client"
+import React, { useEffect, useRef } from "react"
+import { motion, useInView, useAnimation } from "motion/react"
 
 interface Props {
   children: React.ReactNode;
-  width?: "fit-content" | "100%";
+  width?: "fit-content" | "100%"
 }
 
 export const Reveal = ({ children, width = "fit-content" }: Props) => {
@@ -12,7 +12,7 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
   const isInView = useInView(ref, { 
     once: true,
     amount: 0.5,
-  });
+  })
 
   const mainControls = useAnimation();
   const slideControls = useAnimation();
@@ -22,7 +22,7 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
       slideControls.start("slideOut");
       mainControls.start("visible");
       };
-    }, [isInView]);
+    }, [isInView])
 
   return (
     <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
@@ -57,5 +57,5 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
         {children}
       </motion.div>
     </div>
-  );
-};
+  )
+}

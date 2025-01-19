@@ -1,52 +1,52 @@
-"use client";
-import { useState, useEffect, useRef } from "react";
-import React from "react";
-import { motion } from "motion/react";
+"use client"
+import { useState, useEffect, useRef } from "react"
+import React from "react"
+import { motion } from "motion/react"
 
 function LandingPage() {
-  const [firstControl, setFirstControl] = useState("hidden");
-  const [secondControl, setSecondControl] = useState("hidden");
-  const [thirdControl, setThirdControl] = useState("hidden");
+  const [firstControl, setFirstControl] = useState("hidden")
+  const [secondControl, setSecondControl] = useState("hidden")
+  const [thirdControl, setThirdControl] = useState("hidden")
 
-  const parallaxRef = useRef<HTMLDivElement | null>(null);
+  const parallaxRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
+      const scrollTop = window.scrollY
       if (parallaxRef.current) {
-        parallaxRef.current.style.transform = `translateY(${scrollTop * 0.4}px)`;
+        parallaxRef.current.style.transform = `translateY(${scrollTop * 0.4}px)`
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
-    const firstTextDuration = 1500;
-    const secondTextDelay = firstTextDuration + 750;
-    const thirdTextDelay = secondTextDelay + 750;
+    const firstTextDuration = 1500
+    const secondTextDelay = firstTextDuration + 750
+    const thirdTextDelay = secondTextDelay + 750
 
-    setFirstControl("visible");
+    setFirstControl("visible")
 
     const firstTextTimeout = setTimeout(() => {
-      setFirstControl("fadeOut");
-    }, firstTextDuration);
+      setFirstControl("fadeOut")
+    }, firstTextDuration)
 
     const secondTextTimeout = setTimeout(() => {
-      setSecondControl("visible");
-    }, secondTextDelay);
+      setSecondControl("visible")
+    }, secondTextDelay)
 
     const thirdTextTimeout = setTimeout(() => {
-      setThirdControl("visible");
-    }, thirdTextDelay);
+      setThirdControl("visible")
+    }, thirdTextDelay)
 
     return () => {
-      clearTimeout(firstTextTimeout);
-      clearTimeout(secondTextTimeout);
-      clearTimeout(thirdTextTimeout);
-    };
-  }, []);
+      clearTimeout(firstTextTimeout)
+      clearTimeout(secondTextTimeout)
+      clearTimeout(thirdTextTimeout)
+    }
+  }, [])
 
   return (
 
@@ -191,7 +191,7 @@ function LandingPage() {
         </motion.div>
       </motion.div>
     </div>
-  );
+  )
 }
 
 export default LandingPage;

@@ -1,7 +1,7 @@
-"use client";
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+"use client"
+import React, { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 const menuItems = [
   { id: 1, title: "Home", size: "", href: "/mainpage" },
@@ -10,14 +10,14 @@ const menuItems = [
   { id: 4, title: "Contact Me", size: "2row", href: "/contactme" },
   { id: 5, title: "Card 1", size: "", href: "/card1" },
   { id: 6, title: "Card 2", size: "", href: "/card2" },
-];
+]
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   return (
     <div>
@@ -98,7 +98,7 @@ function Header() {
         )}
       </AnimatePresence>
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header
