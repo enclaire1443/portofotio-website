@@ -1,87 +1,82 @@
-"use client";
-import React from 'react';
-import { Reveal } from '../animations/reveal';
+"use client"
+import React, { useEffect } from 'react';
+import { motion, useAnimate, stagger } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faGithub, faInstagram, faLine } from '@fortawesome/free-brands-svg-icons';
 
-const HardSkill = [
-  { id: 1, name: "Python, C++", color: "Yellow" },
-  { id: 2, name: "JavaScript, React", color: "Black" },
-  { id: 3, name: "Word, Excel", color: "Yellow" },
+const socials = [
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/fatihzamzami',
+    icon: faLinkedin,
+    bgColor: 'bg-blue-400',
+  },
+  {
+    name: 'Line',
+    url: 'https://line.me/ti/p/haiinifatih',
+    icon: faLine,
+    bgColor: 'bg-green-400',
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/fthzami',
+    icon: faInstagram,
+    bgColor: 'bg-pink-400',
+  },
+  {
+    name: 'GitHub',
+    url: 'https://github.com/enclaire1443',
+    icon: faGithub,
+    bgColor: 'bg-blue-800',
+  },
 ];
 
-const SoftSkill = [
-  { id: 1, name: "Problem Solving", color: "Black" },
-  { id: 2, name: "Adaptive", color: "Yellow" },
-  { id: 3, name: "Team Management", color: "Black" },
-];
+function ContactMe() {
+  const [scope, animate] = useAnimate();
 
-function Skills() {
+  useEffect(() => {
+    animate(
+      'a',
+      { opacity: 1, y: 0 },
+      {
+        duration: 0.6,
+        delay: stagger(0.2), 
+        ease: 'easeInOut',
+      }
+    )
+  }, [animate]);
+
   return (
-    <div className="min-h-screen w-full bg-gray-50 flex flex-col justify-center items-center py-16">
-      <div className="text-center mb-12">
-        <Reveal>
-          <h1 className="font-poppins text-6xl font-extrabold">
-            My <span className="text-yellow-400">Skills</span>
-          </h1>
-        </Reveal>
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-4">
+      <div className="container mx-auto text-center mb-12">
+        <motion.h1
+          className="text-4xl sm:text-7xl font-poppins font-superbold text-gray-900"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
+        >
+          Get in Touch
+        </motion.h1>
       </div>
-
-      <div className="w-full max-w-6xl px-4">
-        <div className="mb-12">
-          <div className="flex justify-center">
-            <Reveal>
-              <h2 className="font-poppins text-4xl font-bold text-center mb-8">
-                Hard Skills
-              </h2>
-            </Reveal>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {HardSkill.map((skill) => (
-              <Reveal key={skill.id}>
-                <div
-                  className={`p-8 rounded-xl shadow-lg text-center transition-transform transform hover:scale-105 ${
-                    skill.color === 'Yellow'
-                      ? 'bg-yellow-400 text-black'
-                      : 'bg-black text-white'
-                  }`}
-                >
-                  <p className="font-poppins text-2xl font-semibold">
-                    {skill.name}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <div className="flex justify-center">
-            <Reveal>
-              <h2 className="font-poppins text-4xl font-bold text-center mb-8">
-                Soft Skills
-              </h2>
-            </Reveal>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {SoftSkill.map((skill) => (
-              <Reveal key={skill.id}>
-                <div
-                  className={`p-8 rounded-xl shadow-lg text-center transition-transform transform hover:scale-105 ${
-                    skill.color === 'Yellow'
-                      ? 'bg-yellow-400 text-black'
-                      : 'bg-black text-white'
-                  }`}
-                >
-                  <p className="font-poppins text-2xl font-semibold">
-                    {skill.name}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
+      <div ref={scope} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl">
+        {socials.map((social, index) => (
+          <motion.a
+            key={index}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit my ${social.name}`}
+            className={`${social.bgColor} h-24 sm:h-32 md:h-40 rounded-lg flex justify-center items-center`}
+            initial={{ opacity: 0, y: 30 }} 
+            whileHover={{ scale: 1.04 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            <FontAwesomeIcon icon={social.icon} className="text-white text-4xl sm:text-6xl md:text-8xl" />
+          </motion.a>
+        ))}
       </div>
     </div>
   );
 }
 
-export default Skills;
+export default ContactMe;

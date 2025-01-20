@@ -17,9 +17,9 @@ const experiences = [
   },
   {
     id: 3,
-    title: "Hong Kong International Mathematics Olympiad Finalist 2019",
-    role: "Finalist",
-    description: "Competed as a finalist in the Hong Kong International Mathematics Olympiad, showcasing problem-solving and analytical skills.",
+    title: "Hong Kong International Mathematics Olympiad 2019",
+    role: "Bronze Medalist",
+    description: "Achieved a bronze medal in the Hong Kong International Mathematics Olympiad, showcasing problem-solving and analytical skills.",
   },
 ];
 
