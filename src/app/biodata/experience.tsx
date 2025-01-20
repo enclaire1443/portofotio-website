@@ -7,7 +7,7 @@ const experiences = [
     id: 1,
     title: "Exercise FTUI Intern 2024",
     role: "Software Frontend Developer",
-    description: "Worked on developing and maintaining the frontend of web applications using modern technologies.",
+    description: "Practiced and contributed on real web application frontend development using React and TailwindCSS",
   },
   {
     id: 2,
