@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimate, stagger } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub, faInstagram, faLine } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faGithub, faInstagram, faLine, faSpotify } from '@fortawesome/free-brands-svg-icons';
 
 const socials = [
   {
@@ -28,6 +28,12 @@ const socials = [
     url: 'https://github.com/enclaire1443',
     icon: faGithub,
     bgColor: 'bg-blue-800',
+  },
+  {
+    name: 'Spotify',
+    url: 'https://open.spotify.com/user/31s4tbptqdhmx2wmxwmecw2eaz4y?si=b12fc2f74c5d4a8b',
+    icon: faSpotify,
+    bgColor: 'bg-[#1ED760]',
   },
 ];
 
@@ -58,7 +64,7 @@ function ContactMe() {
           Get in Touch
         </motion.h1>
       </div>
-      <div ref={scope} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl">
+      <div ref={scope} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 w-full max-w-4xl">
         {socials.map((social, index) => (
           <motion.a
             key={index}
